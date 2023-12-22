@@ -1,0 +1,214 @@
+/* Container for the fixed top section */
+.fixed-top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 10vh; /* 15% of the viewport height */
+    top: 0;
+    left: 0;
+    background-color: #091540; /* Primary color */
+    color: white;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optional shadow for depth */
+}
+
+/* Styling for the app name */
+.app-name {
+    font-size: 2em;
+    cursor: pointer;
+    vertical-align: center;
+    width: 30%;
+    color:#7692FF;
+    height: 100%;
+}
+
+/* Container for navigation links */
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 70%;
+}
+
+/* Individual navigation link styling */
+.nav-link {
+    cursor: pointer;
+    width: 100px;
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #abd2fa; /* Tertiary color for hover effect */
+    transform: translateY(-2px);
+}
+
+/* Container for the dynamic content */
+.dynamic-content-container {
+    padding-top: 15vh; /* Offset equal to the height of the fixed top section */
+    height: 85vh; /* Remaining viewport height */
+    overflow-y: auto; /* Allows scrolling within the container */
+    background-color: #D3D0E1;
+    width: 100vw;
+    color: #091540; /* Primary color */
+}
+
+/* Main Content Area */
+.main-content-area {
+    padding-top: 15vh; /* Offset equal to the height of the fixed top section */
+    height: 85vh; /* Remaining viewport height */
+    overflow-y: auto; /* Allows scrolling within the container */
+    background-color: #D3D0E1;
+    width: 100vw;
+    color: #091540; /* Primary color */
+}
+
+/* Styling for issuer's request sections */
+.issuer-requests {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.pending-creation-requests, .pending-verification-requests {
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    padding: 10px;
+    gap: 20px; /* Space between items */
+}
+
+.request-item {
+    flex: 0 0 auto; /* Prevent shrinking and growing, but allow basis to be auto */
+    border: 1px solid #abd2fa; /* Tertiary color */
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 300px; /* Minimum width of each request item */
+}
+
+/* Styling for verifier/owner's sections */
+.owner-requests {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.owned-certificates, .owned-verification-requests, .owned-certificate-creation-requests {
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    padding: 10px;
+    gap: 20px; /* Space between items */
+}
+
+/* Common styling for each request or certificate item */
+.request-item, .certificate-item {
+    border-bottom: 1px solid #091540; /* Primary color */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Last item in each section should not have a border at the bottom */
+.request-item:last-child, .certificate-item:last-child {
+    
+}
+
+.request-item-approved {
+    border: 5px solid #3C6E71; /* Border color for approved requests */
+    /* Add other styling as needed */
+}
+
+.request-item-pending {
+    border: 5px solid #DAB785; /* Border color for pending requests */
+    /* Add other styling as needed */
+}
+
+/* Titles for each section */
+.issuer-requests h2, .owner-requests h2 {
+    color: #091540; /* Primary color */
+    margin-bottom: 10px;
+}
+
+/* Styling for the account view section */
+.account-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    margin: 20px;
+    width: 90%;
+    opacity: 100%;
+    background-color: white;
+}
+
+/* Styling for each row in the account view */
+.account-row {
+    display: flex;
+    justify-content: initial;
+    width: 50%;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+/* Styling for the title in each row */
+.account-title {
+    font-weight: bold;
+    color: #abd2fa; /* Tertiary color */
+    width: 30%;
+}
+
+/* Styling for the value in each row */
+.account-value {
+    color: #80ded9; /* Light teal color */
+}
+
+/* Optional: Add a decorative line between rows */
+.account-row:not(:last-child):after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #091540; /* Primary color */
+    margin-top: 10px;
+}
+
+.approve-btn {
+    background-color: #091540; /* Primary color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.approve-btn:hover {
+    background-color: #7692ff; /* A lighter shade of the primary color for hover effect */
+    transform: scale(1.05); /* Slight increase in size on hover */
+}
+
+.approve-btn:focus {
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 0 2px rgba(118, 146, 255, 0.5); /* Adds a glow effect on focus */
+}
+

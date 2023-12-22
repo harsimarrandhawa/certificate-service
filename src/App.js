@@ -1,33 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import React from 'react';
-import CertificateCreationForm from './CertificateCreationForm';
-import CertificateVerificationForm from './CertificateVerificationForm';
-// import any other components you need
+import MetaMaskLogin from './MetaMaskLogin';
+import UserRoleSelection from './UserRoleSelection'; // Import the UserRoleSelection component
 
 function App() {
-  // Function to handle certificate creation form submission
-  const handleCertificateCreation = (formData) => {
-    console.log('Certificate Creation Data:', formData);
-    // Send formData to backend or blockchain for certificate creation
-  };
+    const [userAddress, setUserAddress] = useState(null);
 
-  // Function to handle certificate verification form submission
-  const handleCertificateVerification = (certificateId) => {
-    console.log('Certificate Verification Request for ID:', certificateId);
-    // Send request to backend or blockchain for certificate verification
-  };
+    const handleLoginSuccess = (address) => {
+        setUserAddress(address);
+    };
 
-  return (
-    <div className="App">
-      <h1>Certificate Creation</h1>
-      <CertificateCreationForm onSubmit={handleCertificateCreation} />
-
-      <h1>Certificate Verification</h1>
-      <CertificateVerificationForm onSubmit={handleCertificateVerification} />
-      {/* Other components or content */}
-    </div>
-  );
+    return (
+        <div className="app-container">
+            {!userAddress ? (
+                <>
+                    <h1 className="headline">Certifcate Service</h1>
+                    <p className="slogan">Empowering certificate management with blockchain technology</p>
+                    <p className="intro">To begin with our service:</p>
+                    <MetaMaskLogin onLoginSuccess={handleLoginSuccess} />
+                </>
+            ) : (
+                <UserRoleSelection userAddress={userAddress} />
+            )}
+        </div>
+    );
 }
 
 export default App;

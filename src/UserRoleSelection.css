@@ -1,0 +1,74 @@
+
+
+/* UserRoleSelection.css */
+.user-role-container {
+    background-color: #091540; /* Primary color */
+    color: #7692ff; /* Secondary color */
+    /*border: 1px solid #abd2fa;*/ /* Tertiary color border */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.app-name {
+    color: white; /* Secondary color */
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 2em;
+}
+
+.address-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    border: 1px solid #abd2fa; /* Tertiary color border */
+    padding: 50px;
+    font-size: 30px;
+}
+
+.address-label {
+    color: #abd2fa; /* Tertiary color */
+    margin-right: 10px;
+}
+
+.address-value {
+    color: #80ded9; /* Specific color for the address */
+}
+
+
+.role-selection {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.role-option {
+    background-color: #abd2fa; /* tertiary color */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #091540;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.set-role-btn {
+    background-color: #f6851b; /* MetaMask button color */
+    color: white;             /* Text color */
+    border: none;             /* No border */
+    padding: 10px 20px;       /* Padding for the button */
+    border-radius: 5px;       /* Rounded corners */
+    font-size: 2em;          /* Font size */
+    cursor: pointer;          /* Cursor changes to pointer on hover */
+    margin-top: 20px;         /* Spacing above the button */
+    width: 400px;
+}
+
+.set-role-btn:hover {
+    background-color: #e0741b; /* Slightly darker on hover */
+}
+

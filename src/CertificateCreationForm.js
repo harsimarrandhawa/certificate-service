@@ -1,75 +1,86 @@
 import React, { useState } from 'react';
-import './Forms.css'; // Import the CSS file
+import axios from 'axios';
+import './CertificateCreationForm.css'; // Ensure you create and style this CSS file accordingly
 
-function CertificateCreationForm({ onSubmit }) {
-  const [owner, setOwner] = useState('');
-  const [dataFields, setDataFields] = useState([{ dataType: '', dataValue: '' }]);
+const CertificateCreationForm = ({ userAddress }) => {
+    const [title, setTitle] = useState('');
+    const [dataRows, setDataRows] = useState([{ dataType: '', dataValue: '' }]);
+    const [submissionStatus, setSubmissionStatus] = useState('');
 
-  const handleFieldChange = (index, event) => {
-    const values = [...dataFields];
-    if (event.target.name === "dataType") {
-      values[index].dataType = event.target.value;
-    } else {
-      values[index].dataValue = event.target.value;
-    }
-    setDataFields(values);
-  };
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+    };
 
-  const handleAddField = () => {
-    const values = [...dataFields];
-    values.push({ dataType: '', dataValue: '' });
-    setDataFields(values);
-  };
+    const handleDataRowChange = (index, field, value) => {
+        const newDataRows = [...dataRows];
+        newDataRows[index][field] = value;
+        setDataRows(newDataRows);
+    };
 
-  const handleRemoveField = (index) => {
-    const values = [...dataFields];
-    values.splice(index, 1);
-    setDataFields(values);
-  };
+    const addDataRow = () => {
+        setDataRows([...dataRows, { dataType: '', dataValue: '' }]);
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const dataObject = dataFields.reduce((obj, field) => {
-      obj[field.dataType] = field.dataValue;
-      return obj;
-    }, {});
-    onSubmit({ owner, data: dataObject });
-  };
+    const removeDataRow = (index) => {
+        const newDataRows = dataRows.filter((_, i) => i !== index);
+        setDataRows(newDataRows);
+    };
 
-  return (
-    <div className="form-container">
-      <h2 className="form-title">Create Certificate</h2>
-      <form onSubmit={handleSubmit}>
-        
-        {dataFields.map((field, index) => (
-          <div className="form-row" key={index}>
-            <label className="form-label">Data Type:</label>
-            <input
-              className="form-input"
-              type="text"
-              name="dataType"
-              value={field.dataType}
-              onChange={(e) => handleFieldChange(index, e)}
-            />
-            <label className="form-label">Data Value:</label>
-            <input
-              className="form-input"
-              type="text"
-              name="dataValue"
-              value={field.dataValue}
-              onChange={(e) => handleFieldChange(index, e)}
-            />
-            <button className="form-button remove-button" type="button" onClick={() => handleRemoveField(index)}>Remove</button>
-          </div>
-        ))}
-        <div className="inline-buttons">
-          <button className="form-button" type="button" onClick={handleAddField}>Add Data Field</button>
-          <button className="form-button" type="submit">Create Certificate</button>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Example of processing dataRows into a single string (you might use hashing instead)
+        const certificateDataHash = dataRows.map(row => `${row.dataType}:${row.dataValue}`).join(';');
+
+        const formData = {
+            owner: userAddress,
+            certificateDataHash
+        };
+
+        try {
+            setSubmissionStatus('Submitting request...');
+            const response = await axios.post('http://localhost:3000/request-certificate-creation', formData);
+            setSubmissionStatus(response.data.message || 'Request submitted successfully');
+            // Clear the form after successful submission
+            setTitle('');
+            setDataRows([{ dataType: '', dataValue: '' }]);
+        } catch (error) {
+            console.error('Error submitting certificate creation request:', error);
+            setSubmissionStatus('Failed to submit request');
+        }
+    };
+
+
+    return (
+        <div className="certificate-creation-form">
+            <div className="form-row">
+                <label>Title:</label>
+                <input type="text" value={title} onChange={handleTitleChange} />
+            </div>
+            {dataRows.map((row, index) => (
+                <div key={index} className="form-row">
+                    <input
+                        type="text"
+                        value={row.dataType}
+                        onChange={(e) => handleDataRowChange(index, 'dataType', e.target.value)}
+                        placeholder="Data Type"
+                    />
+                    <input
+                        type="text"
+                        value={row.dataValue}
+                        onChange={(e) => handleDataRowChange(index, 'dataValue', e.target.value)}
+                        placeholder="Data Value"
+                    />
+                    <button className="del-row-btn" type="button" onClick={() => removeDataRow(index)}>X</button>
+                </div>
+            ))}
+            <button className="add-data-row-btn" type="button" onClick={addDataRow}>Add Data Row</button>
+            <div>
+                <button className="form-submit-btn " type="button" onClick={handleSubmit}>Submit</button>
+            </div>
+            {submissionStatus && <p className="submission-status">{submissionStatus}</p>}
         </div>
-      </form>
-    </div>
-  );
-}
-
+    );
+};
 
 export default CertificateCreationForm;

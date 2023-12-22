@@ -36,3 +36,47 @@
     transform: rotate(360deg);
   }
 }
+
+.app-container {
+    background-color: #091540;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.headline {
+    color: #7692ff;
+    font-size: 8em;
+    margin-bottom: 0.5em;
+}
+
+.slogan {
+    color: #abd2fa;
+    font-size: 2em;
+    max-width: 600px;
+    margin-bottom: 1em;
+}
+
+.intro {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.metamask-btn {
+    background-color: #f6851b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 2em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.metamask-btn:hover {
+    background-color: #e2741b;
+}

@@ -7,7 +7,7 @@ async function main() {
     const CertificateRegistry = await ethers.getContractFactory("CertificateService");
     const certificateRegistry = await CertificateRegistry.deploy();
 
-    console.log("CertificateRegistry address:", certificateRegistry.address);
+    console.log("CertificateService address:", certificateRegistry.address);
 }
 
 main()

@@ -1,0 +1,102 @@
+
+.certificate-creation-form {
+    border: 2px solid #abd2fa; /* Tertiary color for border */
+    display: flex;          /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;    /* Center children horizontally */
+    justify-content: center;/* Center children vertically */
+    width: 100%;            /* Set width to fill container */
+    padding: 20px;          /* Add some padding */
+    margin: 20px 0;
+    background-color: #D3D0E1;
+}
+
+.form-title {
+    color: white;
+}
+
+.form-row {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.form-row label {
+    margin-right: 10px;
+    color: #091540; /* Primary color */
+}
+
+.form-row input[type="text"] {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #091540; /* Primary color */
+    color: #091540; /* Primary color */
+}
+
+.form-row button {
+    background-color: #f6851b; /* MetaMask button color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-row button:hover {
+    background-color: #e0741b; /* Darker shade for hover */
+}
+
+.del-row-btn {
+    background-color: #FF5A5F; 
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.set-role-btn, .add-data-row-btn {
+    background-color: #091540; /* Primary color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.submit-btn {
+    background-color: #091540; /* Primary color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    width: 400px;
+    transition: background-color 0.3s ease;
+}
+
+.set-role-btn:hover, .add-data-row-btn:hover, .submit-btn:hover {
+    background-color: #7692ff; /* Secondary color for hover */
+}
+
+.form-submit-btn {
+    background-color: #f6851b; /* MetaMask button color */
+    color: white;             /* Text color */
+    border: none;             /* No border */
+    padding: 10px 20px;       /* Padding for the button */
+    border-radius: 5px;       /* Rounded corners */
+    font-size: 1.5em;          /* Font size */
+    cursor: pointer;          /* Cursor changes to pointer on hover */
+    margin-top: 20px;         /* Spacing above the button */
+    width: 400px;
+    margin-top: 20px;
+}
+
+.form-submit-btn:hover {
+    background-color: #e0741b; /* Slightly darker on hover */
+}
+
+.submission-status {
+    color: #091540; /* Your primary color */
+    /* Add other styling as needed, like font size, margin, etc. */
+}
